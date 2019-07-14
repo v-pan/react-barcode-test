@@ -8,6 +8,6 @@
  - Linked `react-native-vector-icons`
 ### Roboto font
  - Downloaded `Roboto-*.ttf` files
- - Added `react-native.config.js` (see (configuration guide)[https://github.com/react-native-community/cli/blob/master/docs/configuration.md])
+ - Added `react-native.config.js` (see [configuration guide](https://github.com/react-native-community/cli/blob/master/docs/configuration.md))
  - Referenced path to assets
  - Linked `Roboto-*.ttf`
