@@ -11,3 +11,14 @@
  - Added `react-native.config.js` (see (configuration guide)[https://github.com/react-native-community/cli/blob/master/docs/configuration.md])
  - Referenced path to assets
  - Linked `Roboto-*.ttf`
+
+
+## React-Native camera
+ - Added and linked `react-native-camera`
+
+## React navigation
+ - Added, linked and configured `react-navigation`
+
+## MobX
+ - Added `mobx` and `mobx-react`
+ - Added and configured `@babel/plugin-proposal-decorators`
