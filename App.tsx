@@ -27,7 +27,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Camera } from './src/Camera';
+import Camera from './src/Camera';
 
 export async function requestCameraPermission() {
   try {
