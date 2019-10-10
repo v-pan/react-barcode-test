@@ -22,3 +22,4 @@
 ## MobX
  - Added `mobx` and `mobx-react`
  - Added and configured `@babel/plugin-proposal-decorators`
+ - Added `mobx-utils`
