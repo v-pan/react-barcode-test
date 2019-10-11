@@ -2,7 +2,7 @@ export interface FoodFactsEntry {
     status_verbose: string
     status: number
     product: Product
-    code: number
+    code: string
 }
 
 export interface Ingredient {
