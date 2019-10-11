@@ -1,54 +1,43 @@
 import React from 'react'
-import { observable, action, computed, flow } from 'mobx'
+import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { FoodFactsEntry } from './IFoodFactsJson';
-import { fromPromise, IPromiseBasedObservable } from 'mobx-utils'
-
-class FoodFactsPending {
-    status_verbose = "pending"
-    status = -1
-    code = -1
-}
+import { fromPromise } from 'mobx-utils'
+import { Card } from 'react-native-material-ui';
 
 @observer
 export class Item extends React.Component {
-    @observable fetchEntry = fromPromise(fetch("https://world.openfoodfacts.org/api/v0/product/737628064502.json").then((value) => { return value.json() }))
+    @action fetchEntry = (barcode: number) => {
+        return fromPromise(fetch("https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json").then((value) => { return value.json() }))
+    }
 
-    // @action
-    // readJson = () => fetch("https://world.openfoodfacts.org/api/v0/product/737628064502.json")
-    //     .then(
-    //         (response) => {
-    //             if(!response.ok) {
-    //                 throw new Error("HTTP Error: " + response.status)
-    //             }
-
-    //             return response.json()
-    //         },
-    //         (error) => {
-    //             throw new Error("Fetch Error: " + error)
-    //         }
-    //     ).then(
-    //         (data) => {
-
-    //         }
-    //     )
+    @observable foodEntry = this.fetchEntry(737628064502)
 
     render() {
         return(
             <View>
-                <Text>{this.fetchEntry.case({
+                {this.foodEntry.case({
                     pending: () => {
-                        return "Loading..."
+                        return <Text>Loading...</Text>
                     },
                     fulfilled: (value: FoodFactsEntry) => {
-                        return value.product.product_name_en
+                        return (
+                            <Card>
+                                <View>
+                                    <Text>{value.product.product_name}</Text>
+                                    <Image
+                                        style={{width: 150, height: 150}}
+                                        source={{uri: value.product.image_front_url}}
+                                    />
+                                </View>
+                            </Card>
+                        )
                     },
                     rejected: (error) => {
-                        return error
-                        // return <Text>Error: {error}</Text>
+                        return <Text>{error}</Text>
                     }
-                })}</Text>
+                })}
             </View>
         )
     }
