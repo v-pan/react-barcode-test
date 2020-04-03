@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import AppNavigator from './src/Navigator';
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />

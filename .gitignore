@@ -1,3 +1,7 @@
+# Keystore
+#
+android/app/debug.keystore
+
 # OSX
 #
 .DS_Store
