@@ -5,7 +5,6 @@ import { TakePictureResponse } from 'react-native-camera';
 import { FoodFactsEntry } from './data/FoodFactsEntry';
 import { PendingView } from './components/common/PendingView';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Card } from 'react-native-material-ui';
 import { IngredientsView } from './components/item/IngredientsView';
 
 type Props = {
@@ -51,9 +50,7 @@ export const HomeScreen = ({navigation, route} : Props ) => {
                   {entry.product.product_name}
                 </Text>
               </View>
-              <Card style={entryStyles.description}>
-                <IngredientsView />
-              </Card>
+              <IngredientsView />
           </ScrollView>
         : (loadingProduct == true) ?
           <PendingView />
