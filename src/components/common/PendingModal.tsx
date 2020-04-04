@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import { Modal, View, ActivityIndicator, StyleSheet } from 'react-native'
+import { Modal, View, StyleSheet } from 'react-native'
+import { ActivityIndicator } from 'react-native-paper'
 
 export const PendingModal = ({loading}) => {
     return (

@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, StyleSheet, Text, ActivityIndicator } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import { ActivityIndicator } from 'react-native-paper'
 
 export const PendingView: React.FC = () => {
     return (

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import { PendingView } from './components/common/PendingView';
 import { PendingModal } from './components/common/PendingModal';
+import { Text } from "react-native-paper";
 
 export const CameraScreen = ({navigation}) => {
   const [takingPicture, setTakingPicture] : [boolean, any] = useState(false);
