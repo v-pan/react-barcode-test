@@ -1,28 +1,27 @@
-/* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useState } from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {RNCamera} from 'react-native-camera';
-import { CameraResponse } from './data/CameraResponse';
-
-const PendingView = () => {
-  return (
-    <View>
-      <Text>Pending...</Text>
-    </View>
-  );
-};
+import { PendingView } from './components/common/PendingView';
+import { PendingModal } from './components/common/PendingModal';
 
 export const CameraScreen = ({navigation}) => {
+  const [takingPicture, setTakingPicture] : [boolean, any] = useState(false);
+
   const takePicture = async (camera: RNCamera) => {
+    setTakingPicture(true);
     const options = {quality: 0.5, base64: true};
     const data = await camera.takePictureAsync(options);
 
     console.log(data.uri);
-    navigation.navigate('Home', {data: data as CameraResponse});
+    setTakingPicture(false);
+    navigation.navigate('Home', {cameraData: data});
   };
 
   return (
     <View style={styles.container}>
+
+      <PendingModal loading={takingPicture} />
+
       <RNCamera
         style={styles.preview}
         type={RNCamera.Constants.Type.back}

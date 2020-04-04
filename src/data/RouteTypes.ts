@@ -1,9 +1,9 @@
 import { StackNavigationProp } from "@react-navigation/stack"
 import { RouteProp } from "@react-navigation/native"
-import { CameraResponse } from "./CameraResponse"
+import { TakePictureResponse } from "react-native-camera"
 
 export type RootStackParamList = {
-    Home: { data: CameraResponse } | undefined;
+    Home: { cameraData: TakePictureResponse } | undefined;
     Camera: undefined;
 }
 

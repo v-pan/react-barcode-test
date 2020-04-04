@@ -5,17 +5,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from './src/HomeScreen';
 import { CameraScreen } from './src/CameraScreen';
 import { RootStackParamList } from './src/data/RouteTypes';
+import { ThemeContext, getTheme} from 'react-native-material-ui'
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <RootStack.Navigator initialRouteName="Home">
-        <RootStack.Screen name="Home" component={HomeScreen} />
-        <RootStack.Screen name="Camera" component={CameraScreen} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    // <ThemeContext.Provider value={getTheme(light)}>
+      <NavigationContainer>
+        <RootStack.Navigator initialRouteName="Home">
+          <RootStack.Screen name="Home" component={HomeScreen} />
+          <RootStack.Screen name="Camera" component={CameraScreen} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    // </ThemeContext.Provider>
   );
 };
 
