@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { TypeScriptScreen } from './TypeScriptScreen';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import { HomeScreenNavigationProp, HomeScreenRouteProp } from './data/RouteTypes';
+import { CameraResponse } from './data/CameraResponse';
 
 type Props = {
   navigation: HomeScreenNavigationProp;
@@ -9,23 +9,36 @@ type Props = {
 }
 
 export const HomeScreen = ({navigation, route} : Props ) => {
-  const [data, setData] = useState(undefined)
+  const [data, setData] : [CameraResponse, any] = useState(undefined)
 
   useEffect(() => {
     if (route.params?.data) {
-      console.log(route.params.data);
+      const result = route.params.data;
+
+      setData(result);
     }
   }, [route.params?.data]);
 
   return (
     <View style={styles.root}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Open camera"
-        onPress={() => {
-          navigation.push('Camera');
-        }}
-      />
+      <View>
+        <Text>Home Screen</Text>
+        <Button
+          title="Open camera"
+          onPress={() => {
+            navigation.push('Camera');
+          }}
+        />
+      </View>
+      <View>
+      { data?.uri ?
+          <>
+            <Text>Uri: {data.uri}</Text>
+          </>
+        :
+          <Text>None</Text>
+      }
+      </View>
     </View>
   );
 };
@@ -35,5 +48,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column'
   },
 });

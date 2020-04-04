@@ -2,6 +2,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {RNCamera} from 'react-native-camera';
+import { CameraResponse } from './data/CameraResponse';
 
 const PendingView = () => {
   return (
@@ -17,7 +18,7 @@ export const CameraScreen = ({navigation}) => {
     const data = await camera.takePictureAsync(options);
 
     console.log(data.uri);
-    navigation.navigate('Home', {data: data});
+    navigation.navigate('Home', {data: data as CameraResponse});
   };
 
   return (
